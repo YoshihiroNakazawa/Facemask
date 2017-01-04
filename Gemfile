@@ -14,6 +14,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'letter_opener_web'
+  gem 'pry-rails'
+  gem 'better_errors'
 end
 gem 'twitter-bootstrap-rails'
 gem 'devise'
