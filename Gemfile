@@ -18,3 +18,5 @@ end
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'rails_12factor', group: :production
+gem 'rails_admin'
+gem 'cancan'
