@@ -16,9 +16,13 @@ group :development, :test do
   gem 'letter_opener_web'
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'dotenv-rails'
 end
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'rails_admin'
 gem 'cancan'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
