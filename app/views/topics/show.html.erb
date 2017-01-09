@@ -1,14 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
+<p class="left"><strong>タイトル</strong></p>
+<p class="left"><%= @topic.title %></p>
+<p class="left"><strong>内容</strong></p>
+<p class="left"><%= @topic.content %></p>
+<p class="right">
+  <strong>作成時刻:</strong>
+  <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @topic.content %>
-</p>
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<p>コメント一覧</p>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+</div>
+<%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
+<% if current_user.id == @topic.user_id %>
+  <%= link_to '編集', edit_topic_path(@topic) %> |
+<% end %>
+<%= link_to '戻る', topics_path %>

@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Topics</h1>
+<h1>トピック一覧</h1>
+<%= link_to 'New Topic', new_topic_path %>
 
 <table>
   <thead>
@@ -16,16 +17,17 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= topic.user.name %></td>
-        <td><%= topic.title %></td>
+        <td>
+          <%= link_to topic_path(topic) do %>
+            <%= topic.title %>
+          <% end %>
+        </td>
         <td><%= topic.content %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to_if(topic.user.id==current_user.id, '編集', edit_topic_path(topic)) %></td>
+        <td><%= link_to_if(topic.user.id==current_user.id, '削除', topic, method: :delete, data: { confirm: '本当に削除していいですか？' }) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Topic', new_topic_path %>
