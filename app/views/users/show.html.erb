@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h3>ユーザー詳細</h3>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="user-detail">
+      <div class="user_image" >
+        <%= profile_img(@user) if profile_img(@user) %>
+      </div>
+      <p>名前:<%= @user.name %></p>
+      <p>メール:<%= @user.email %></p>
+    </div>
+    <div class="user-follow">
+      <div class="user-followed">
+        <% if @user.followed_users.size == 0 %>
+          <p class="left"><%= @user.name %>さんは誰もフォローしていません。</p>
+        <% else %>
+          <p class="left"><%= @user.name %>さんが以下のユーザーをフォローしています。</p>
+          <%= render partial: 'follow_index', locals: { users: @user.followed_users } %>
+        <% end %>
+      </div>
+        <div class="user-follower">
+        <% if @user.followers.size == 0 %>
+          <p class="left"><%= @user.name %>さんは誰からもフォローされていません。</p>
+        <% else %>
+          <p class="left">以下のユーザーが<%= @user.name %>さんをフォローしています。</p>
+          <%= render partial: 'follow_index', locals: { users: @user.followers } %>
+        <% end %>
+      </div>
+    </div>
+    <%= link_to '戻る', users_path %>
+  </div>
+</div>

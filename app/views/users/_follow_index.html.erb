@@ -1,0 +1,10 @@
+<ul>
+  <% users.each do |user| %>
+    <li>
+      <div class="user_image" >
+        <%= profile_img(user) if profile_img(user) %>
+      </div>
+      <p class="left"><%= user.name %></p>
+    </li>
+  <% end %>
+</ul>
