@@ -2,10 +2,26 @@
 <html>
 
   <head>
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
     <title>Facemask</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <% if user_signed_in? %>
+      <script>
+        var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+          encrypted: true
+        });
+
+        var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+        channel.bind('comment_created', function(data) {
+          alert(data.message);
+        });
+        channel.bind('notification_created', function(data) {
+          $('#unread_count').html(data.unread_counts);
+        });
+      </script>
+    <% end %>
   </head>
 
   <body>
