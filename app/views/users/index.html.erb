@@ -4,9 +4,24 @@
     <% if user.id != current_user.id %>
       <div>
         <%= link_to user_path(user) do %>
-          <div style="max-width:50px;" %>
-            <%= profile_img(user) %>
-          </div>
+          <% unless user.following?(current_user) %>
+            <div style="max-width:50px;position:relative" %>
+              <%= image_tag "base#{(user.id%6)+1}.png" %>
+              <p style="position:absolute;left:0px;top:0px" %>
+                <%= image_tag "eye#{(user.id%3)+1}.png" %>
+              </p>
+              <p style="position:absolute;left:0px;top:0px" %>
+                <%= image_tag "nose#{(user.id%3)+1}.png" %>
+              </p>
+              <p style="position:absolute;left:0px;top:0px" %>
+                <%= image_tag "mouth#{(user.id%3)+1}.png" %>
+              </p>
+            </div>
+          <% else %>
+            <div style="max-width:50px;" %>
+              <%= profile_img(user) %>
+            </div>
+          <% end %>
         <% end %>
         <%= user.email %>
         <% if user.id != current_user.id %>
