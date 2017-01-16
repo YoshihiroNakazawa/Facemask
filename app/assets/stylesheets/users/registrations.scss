@@ -1,3 +1,85 @@
 // Place all the styles related to the users::registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.logo-mask {
+  background-image: image-url("logomask.png");
+  background-size: 180px;
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  width: 180px;
+}
+
+.login-form {
+  background-color: white;
+  margin-top: 30px;
+  padding: 30px 20%;
+}
+
+.signup-form {
+  margin-top: 30px;
+  padding: 30px 20%;
+}
+
+.btn-signin {
+  color: white;
+  background-color: #4c66a4;
+  border-color: darken(#4c66a4,20%);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    color: white;
+    background-color: darken(#4c66a4, 8%);
+    border-color: darken(darken(#4c66a4,20%), 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: #4c66a4;
+      border-color: darken(#4c66a4,20%)
+    }
+  }
+}
+
+.btn-signup {
+  color: white;
+  background-color: #609a50;
+  border-color: darken(#609a50,20%);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    color: white;
+    background-color: darken(#609a50, 8%);
+    border-color: darken(darken(#609a50,20%), 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: #609a50;
+      border-color: darken(#609a50,20%)
+    }
+  }
+}

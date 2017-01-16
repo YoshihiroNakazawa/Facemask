@@ -1,27 +1,29 @@
-<p class="flash"><%= notice %><%= alert %></p>
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <% if notice != nil || alert != nil %>
+    <div class="alert alert-warning alert-dismissable">
+      <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= notice %><%= alert %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="login-form">
+        <h4><b>Facemask</b>にログイン</h4>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.error_messages! %>
+          <div class="field" style="margin-top:20px">
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+          </div>
+          <div class="field" style="margin-top:10px">
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+          </div>
+          <div class="actions" style="margin-top:10px">
+            <%= f.submit "ログイン", class: "btn btn-signin btn-block" %>
+          </div>
+        <% end %>
+        <br>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
