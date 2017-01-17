@@ -10,6 +10,56 @@ header {
   background-color: #3b5998;
 }
 
+.navbar-brand {
+  .logo-mask {
+    background-image: image-url("logomask.png");
+    background-size: 180px;
+    background-repeat: no-repeat;
+    background-position: 0px center;
+    width: 180px;
+  }
+  .icon-mask {
+    width: 40px;
+    margin-top: -10px;
+    position: relative;
+    .parts-mask {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+  }
+}
+.navbar-nav {
+  .icon-profile {
+    display: block;
+    float: left;
+    width: 30px;
+    margin-top: 10px;
+  }
+  .text-profile {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 5px;
+    color: #ccc;
+    &:hover {
+      color: white;
+    }
+  }
+  .icon-font {
+    color: black;
+    &:hover {
+      color: lighten(black, 50%);
+    }
+  }
+  .dropdown .dropdown-toggle {
+    color: black;
+    &:hover {
+      color: lighten(black, 50%);
+    }
+  }
+}
+
 .navbar-default {
   border: 0;
   padding: 0px 25px;
