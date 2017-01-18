@@ -3,7 +3,8 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.all
+    @user = User.find(params[:user_id])
+    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
   end
 
   def show
@@ -13,6 +14,7 @@ class TopicsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @topic = Topic.new
   end
 

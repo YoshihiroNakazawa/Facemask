@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>トピック一覧</h1>
-<%= link_to 'New Topic', new_topic_path %>
+<%= link_to 'New Topic', new_user_topic_path(@user) %>
 
 <table>
   <thead>
@@ -18,13 +18,13 @@
       <tr>
         <td><%= topic.user.name %></td>
         <td>
-          <%= link_to topic_path(topic) do %>
+          <%= link_to user_topic_path(@user, topic) do %>
             <%= topic.title %>
           <% end %>
         </td>
         <td><%= topic.content %></td>
-        <td><%= link_to_if(topic.user.id==current_user.id, '編集', edit_topic_path(topic)) %></td>
-        <td><%= link_to_if(topic.user.id==current_user.id, '削除', topic, method: :delete, data: { confirm: '本当に削除していいですか？' }) %></td>
+        <td><%= link_to '編集', edit_user_topic_path(@user, topic) %></td>
+        <td><%= link_to '削除', user_topic_path( @user, topic ), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
       </tr>
     <% end %>
   </tbody>

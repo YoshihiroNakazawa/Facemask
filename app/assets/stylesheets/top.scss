@@ -12,11 +12,9 @@ header {
 
 .navbar-brand {
   .logo-mask {
-    background-image: image-url("logomask.png");
-    background-size: 180px;
-    background-repeat: no-repeat;
-    background-position: 0px center;
-    width: 180px;
+    width: 150px;
+    margin-left: -30px;
+    margin-top: -20px;
   }
   .icon-mask {
     width: 40px;
