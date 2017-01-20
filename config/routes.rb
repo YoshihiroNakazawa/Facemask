@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :users, only: [:index, :show] do
-    resources :topics do
-      resources :comments
-    end
+    resources :topics
+  end
+  resources :topics do
+    resources :comments
   end
   resources :relationships, only: [:create, :destroy]
   resources :conversations do

@@ -1,33 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <h1>トピック一覧</h1>
-<%= link_to 'New Topic', new_user_topic_path(@user) %>
+<br>
+<%= link_to 'New Topic', new_user_topic_path(@user), remote: true %>
 
 <table>
   <thead>
     <tr>
-      <th>投稿者</th>
+      <% if @user.id != current_user.id %>
+        <th>投稿者</th>
+      <% end %>
       <th>タイトル</th>
       <th>内容</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.user.name %></td>
-        <td>
-          <%= link_to user_topic_path(@user, topic) do %>
-            <%= topic.title %>
-          <% end %>
-        </td>
-        <td><%= topic.content %></td>
-        <td><%= link_to '編集', edit_user_topic_path(@user, topic) %></td>
-        <td><%= link_to '削除', user_topic_path( @user, topic ), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="topics-body">
+    <%= render "tbody" %>
   </tbody>
 </table>
 
-<br>
+<div id="topic-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true"></div>

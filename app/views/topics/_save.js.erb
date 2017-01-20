@@ -1,0 +1,9 @@
+$(".topic-errors").html("")
+<% if @topic.errors.any? %>
+  <% @topic.errors.full_messages.each do |message| %>
+    $(".topic-errors").append("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $(".topics-body").html("<%= escape_javascript(render 'tbody') %>")
+  $("#topic-modal").modal("hide")
+<% end %>

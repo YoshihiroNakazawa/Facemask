@@ -4,12 +4,13 @@ class Topic < ActiveRecord::Base
 
   validates :title, presence: true
   # new -> confirm
-  validates :submited, acceptance: true
+  #validates :submited, acceptance: true
   # confirm -> create
-  validates :confirmed, acceptance: true
+  #validates :confirmed, acceptance: true
 
-  after_validation :confirming
+  #after_validation :confirming
 
+=begin
   private
     def confirming
       if self.submited == ""
@@ -26,4 +27,5 @@ class Topic < ActiveRecord::Base
       errors.delete :submited
       errors.delete :confirmed
     end
+=end
 end

@@ -19,12 +19,16 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def create
+    @user = User.find(params[:user_id])
+    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
-
+    @topic.save
+=begin
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
@@ -33,9 +37,14 @@ class TopicsController < ApplicationController
         #format.html { redirect_to new_topic_url }
       end
     end
+=end
   end
 
   def update
+    @user = @topic.user
+    @topic.update(topic_params)
+    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
+=begin
     respond_to do |format|
       if @topic.update(topic_params)
         format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
@@ -43,13 +52,18 @@ class TopicsController < ApplicationController
         format.html { render :edit }
       end
     end
+=end
   end
 
   def destroy
+    @user = User.find(params[:user_id])
     @topic.destroy
+    redirect_to user_topics_url(@user)
+=begin
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
     end
+=end
   end
 
   private
@@ -58,6 +72,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, :submited, :confirmed)
+      params.require(:topic).permit(:title, :content)
     end
 end
