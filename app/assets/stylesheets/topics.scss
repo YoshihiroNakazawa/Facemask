@@ -1,3 +1,56 @@
-// Place all the styles related to the topics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.left-col {
+  .image-profile {
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+  .text-profile {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+}
+
+.panel-topic-new {
+  .image-profile {
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  .text-profile {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+    color: #cccccc;
+  }
+}
+
+.topics-body {
+  .panel {
+    margin-top: 20px;
+  }
+  text-align: left;
+  .image-profile {
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  .topic-author {
+  }
+  .created-at {
+  }
+}

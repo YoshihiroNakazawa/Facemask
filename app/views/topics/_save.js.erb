@@ -4,6 +4,6 @@ $(".topic-errors").html("")
     $(".topic-errors").append("<%= message.html_safe %>")
   <% end %>
 <% else %>
-  $(".topics-body").html("<%= escape_javascript(render 'tbody') %>")
+  $(".topics-body").html("<%= escape_javascript(render 'index', locals:{topics: @topics}) %>")
   $("#topic-modal").modal("hide")
 <% end %>

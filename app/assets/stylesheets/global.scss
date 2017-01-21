@@ -1,0 +1,39 @@
+@mixin button-fukumen($color) {
+  color: white;
+  background-color: $color;
+  border-color: darken($color,20%);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    color: white;
+    background-color: darken($color, 8%);
+    border-color: darken(darken($color,20%), 12%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $color;
+      border-color: darken($color,20%)
+    }
+  }
+}
+
+.btn-blue {
+  @include button-fukumen(#4c66a4);
+}
+
+.btn-green {
+  @include button-fukumen(#609a50);
+}
