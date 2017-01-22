@@ -3,6 +3,6 @@ class TopController < ApplicationController
 
   def index
     @user = current_user;
-    redirect_to user_topics_path( @user )
+    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
   end
 end
