@@ -1,17 +1,24 @@
 <% @topics.each do |topic| %>
   <div class="panel">
     <div class="panel-heading">
+      <div class="pull-right">
+        <%= link_to edit_user_topic_path(@user, topic), remote: true do %>
+          <p class="fa fa-pencil-square-o"></p>
+        <% end %>
+        <%= link_to user_topic_path( @user, topic ), method: :delete, data: { confirm: '本当に削除していいですか？' } do %>
+          <p class="fa fa-trash-o"></p>
+        <% end %>
+      </div>
       <div class="image-profile" ><%= profile_img(topic.user) if profile_img(topic.user) %></div>
       <div class="topic-author"><%= topic.user.name %></div>
-      <div class="created-at"><%= topic.created_at %></div>
+      <div class="created-at"><%= topic.created_at.strftime("%-m月%-d日 %H:%M") %></div>
     </div>
     <div class="panel-body">
       <div class="topic-title"><%= topic.title %></div>
-      <div class="topic-title"><%= topic.content %></div>
+      <div class="topic-content"><%= topic.content %></div>
     </div>
     <div class="panel-footer">
-      <div><%= link_to '編集', edit_user_topic_path(@user, topic), remote: true %></div>
-      <div><%= link_to '削除', user_topic_path( @user, topic ), method: :delete, data: { confirm: '本当に削除していいですか？' } %></div>
+      <div><%= link_to 'コメントを見る', topic_path(topic) %></div>
     </div>
   </div>
 <% end %>

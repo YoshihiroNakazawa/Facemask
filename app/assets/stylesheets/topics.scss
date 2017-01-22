@@ -1,10 +1,14 @@
+@mixin profile-image-size($size) {
+  overflow: hidden;
+  width: $size;
+  height: $size;
+}
+
 .left-col {
   .image-profile {
+    @include profile-image-size(20px);
     display: block;
     float: left;
-    overflow: hidden;
-    width: 20px;
-    height: 20px;
     margin-top: 10px;
     margin-left: 5px;
   }
@@ -18,11 +22,9 @@
 
 .panel-topic-new {
   .image-profile {
+    @include profile-image-size(50px);
     display: block;
     float: left;
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
     margin-top: 5px;
     margin-left: 5px;
   }
@@ -41,16 +43,25 @@
   }
   text-align: left;
   .image-profile {
+    @include profile-image-size(50px);
     display: block;
     float: left;
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
     margin-top: 5px;
     margin-left: 5px;
+    margin-right: 10px;
   }
   .topic-author {
+    margin-top: 5px;
+    margin-left: 10px;
   }
   .created-at {
+    margin-top: 5px;
+    font-size: small;
+  }
+  .topic-title {
+    font-size: small;
+  }
+  .topic-content {
+    font-size: x-large;
   }
 }

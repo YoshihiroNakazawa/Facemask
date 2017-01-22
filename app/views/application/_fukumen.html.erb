@@ -1,0 +1,9 @@
+<div style="position: relative;">
+  <%= image_tag "base#{(user_id%6)+1}.png" %>
+  <% uid = user_id/6 %>
+  <%= image_tag "eye#{(uid%3)+1}.png", style: "position: absolute; left: 0px; top: 0px;" %>
+  <% uid /= 3 %>
+  <%= image_tag "nose#{(uid%3)+1}.png", style: "position: absolute; left: 0px; top: 0px;" %>
+  <% uid /= 3 %>
+  <%= image_tag "mouth#{(uid%3)+1}.png", style: "position: absolute; left: 0px; top: 0px;" %>
+</div>
