@@ -1,3 +1,44 @@
-// Place all the styles related to the Comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "topics";
+
+.image-profile {
+  @include profile-image-size(10px);
+  display: block;
+  float: left;
+  margin-top: 50px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+#comments_area {
+  text-align: left;
+  .image-profile {
+    @include profile-image-size(25px);
+    //display: block;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+  .comment-author {
+    //display: block;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: small;
+  }
+  .created-at {
+    margin-top: 5px;
+    font-size: small;
+  }
+  .comment-content {
+    //display: inline;
+    //float: left;
+    margin-top: 5px;
+    font-size: small;
+  }
+  .comment-edit {
+    margin-left: 35px;
+    margin-bottom: 10px;
+    font-size: small;
+  }
+}

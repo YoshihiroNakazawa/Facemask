@@ -30,6 +30,12 @@
   }
 }
 
+@mixin profile-image-size($size) {
+  overflow: hidden;
+  width: $size;
+  height: $size;
+}
+
 .btn-blue {
   @include button-fukumen(#4c66a4);
 }

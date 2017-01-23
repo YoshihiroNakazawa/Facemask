@@ -1,0 +1,5 @@
+<% if user.id==current_user.id || user.following?(current_user) %>
+  <%= profile_img(user) if profile_img(user) %>
+<% else %>
+  <%= render partial: 'fukumen', locals: { user_id: user.id } %>
+<% end %>

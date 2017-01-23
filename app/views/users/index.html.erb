@@ -4,15 +4,9 @@
     <% if user.id != current_user.id %>
       <div>
         <%= link_to user_path(user) do %>
-          <% unless user.following?(current_user) %>
-            <div style="max-width:80px" %>
-              <%= render partial: 'fukumen', locals: { user_id: user.id } %>
-            </div>
-          <% else %>
-            <div style="max-width:50px;" %>
-              <%= profile_img(user) %>
-            </div>
-          <% end %>
+          <div style="max-width:50px" %>
+            <%= render partial: 'profileimage', locals: { user: user } %>
+          </div>
         <% end %>
         <%= user.email %>
         <% if user.id != current_user.id %>

@@ -1,8 +1,4 @@
-@mixin profile-image-size($size) {
-  overflow: hidden;
-  width: $size;
-  height: $size;
-}
+@import "global";
 
 .left-col {
   .image-profile {
