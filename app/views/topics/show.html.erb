@@ -17,4 +17,4 @@
 <% if current_user.id == @topic.user_id %>
   <%= link_to '編集', edit_topic_path(@topic) %> |
 <% end %>
-<%= link_to '戻る', topics_path %>
+<%= link_to '戻る', :back %>

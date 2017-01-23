@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :users, only: [:index, :show] do
-    resources :topics
+  resources :users, only: [:index, :show], shallow: true do
+    resources :topics, except: [:index]
   end
-  resources :topics do
+  resources :topics, only: [:show] do
     resources :comments
   end
   resources :relationships, only: [:create, :destroy]

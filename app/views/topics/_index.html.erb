@@ -1,15 +1,25 @@
 <% @topics.each do |topic| %>
   <div class="panel">
     <div class="panel-heading">
-      <div class="pull-right">
-        <%= link_to edit_user_topic_path(@user, topic), remote: true do %>
-          <p class="fa fa-pencil-square-o"></p>
-        <% end %>
-        <%= link_to user_topic_path( @user, topic ), method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } do %>
-          <p class="fa fa-trash-o"></p>
-        <% end %>
-      </div>
-      <div class="image-profile" ><%= profile_img(topic.user) if profile_img(topic.user) %></div>
+      <% if topic.user.id==current_user.id %>
+        <div class="pull-right">
+          <%= link_to edit_topic_path( topic ), remote: true do %>
+            <p class="fa fa-pencil-square-o"></p>
+          <% end %>
+          <%= link_to topic_path( topic ), method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } do %>
+            <p class="fa fa-trash-o"></p>
+          <% end %>
+        </div>
+        <div class="image-profile" ><%= profile_img(topic.user) if profile_img(topic.user) %></div>
+      <% else %>
+        <div class="image-profile" >
+          <% unless topic.user.following?(current_user) %>
+            <%= render partial: 'fukumen', locals: { user_id: topic.user.id } %>
+          <% else %>
+            <%= profile_img(topic.user) if profile_img(topic.user) %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="topic-author"><%= topic.user.name %></div>
       <div class="created-at"><%= topic.created_at.strftime("%-m月%-d日 %H:%M") %></div>
     </div>

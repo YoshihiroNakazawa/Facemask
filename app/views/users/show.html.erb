@@ -22,9 +22,11 @@
         <% if @user.topics.size == 0 %>
           <p class="left"><%= @user.name %>さんの投稿はありません。</p>
         <% else %>
-          <table>
-            <%= render partial: 'topics/index' %>
-          </table>
+          <div class="topics-body">
+            <%= render "topics/index" %>
+          </div>
+          <div id="topic-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+          </div>
         <% end %>
       </div>
       <div class="tab-pane" id="friends">

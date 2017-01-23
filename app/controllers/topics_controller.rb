@@ -2,10 +2,12 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
+=begin
   def index
     @user = User.find(params[:user_id])
     @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
   end
+=end
 
   def show
     @comment = @topic.comments.build
@@ -19,7 +21,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    #@user = current_user
   end
 
   def create
@@ -31,15 +33,15 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @user = @topic.user
+    #@user = @topic.user
     @topic.update(topic_params)
-    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
+    @topics = Topic.where(user_id: @topic.user.id).order(created_at: :desc)
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    uid = @topic.user.id
     @topic.destroy
-    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
+    @topics = Topic.where(user_id: uid).order(created_at: :desc)
   end
 
   private
