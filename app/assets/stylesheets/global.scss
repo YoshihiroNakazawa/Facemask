@@ -31,9 +31,12 @@
 }
 
 @mixin profile-image-size($size) {
-  overflow: hidden;
   width: $size;
   height: $size;
+  img {
+    overflow: hidden;
+    width: 100%;
+  }
 }
 
 .btn-blue {
