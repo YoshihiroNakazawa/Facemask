@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="topics-body">
-      <%= render "topics/index" %>
+      <%= render partial: 'topics/index', locals:{topics: @user.topics.order(created_at: :desc)} %>
     </div>
     <div id="topic-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
     </div>

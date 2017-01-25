@@ -5,7 +5,9 @@
         <%= render partial: 'profileimage', locals: { user: user } %>
       </div>
       <p><%= user.name %></p>
-      <%= render partial: 'follow_form', locals: { user: user } %>
+      <% if user.id != current_user.id %>
+        <%= render partial: 'follow_form', locals: { user: user } %>
+      <% end %>
     </li>
   <% end %>
 </ul>

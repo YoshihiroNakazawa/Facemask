@@ -11,9 +11,9 @@
     <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
       <%= f.hidden_field :followed_id %>
       <% if user.following?(current_user) %>
-        <%= f.submit "申請を承認する", class: "btn btn-xs btn-blue", data: { confirm: '覆面を脱いで素顔を見せます。よろしいですか？' } %>
+        <%= f.submit "申請を承認する", class: "btn btn-xs btn-blue", data: { confirm: '友達には覆面を脱いで素顔を見せます。よろしいですか？' } %>
       <% else %>
-        <%= f.submit "友達を申請する", class: "btn btn-xs btn-blue", data: { confirm: '覆面を脱いで素顔を見せます。よろしいですか？' } %>
+        <%= f.submit "友達を申請する", class: "btn btn-xs btn-blue", data: { confirm: '友達には覆面を脱いで素顔を見せます。よろしいですか？' } %>
       <% end %>
     <% end %>
   <% end %>

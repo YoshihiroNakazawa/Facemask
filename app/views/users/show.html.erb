@@ -12,10 +12,12 @@
       <div class="wrapper col-md-6 col-md-offset-3">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#topics" data-toggle="tab">トピック</a></li>
-          <li><a href="#friends" data-toggle="tab">友達</a></li>
           <% if @user.id==current_user.id %>
-            <li><a href="#followers" data-toggle="tab">新規友達申請</a></li>
-            <li><a href="#followed_users" data-toggle="tab">友達承認待ち</a></li>
+          　<li><a href="#myfriends" data-toggle="tab">友達</a></li>
+            <li><a href="#followers" data-toggle="tab">受信した友達申請</a></li>
+            <li><a href="#followed_users" data-toggle="tab">送信した友達申請</a></li>
+          <% else %>
+            <li><a href="#friends" data-toggle="tab">友達</a></li>
           <% end %>
         </ul>
       </div>
@@ -25,38 +27,36 @@
         <div class="child row">
           <div class="wrapper col-md-6 col-md-offset-3">
             <div class="topics-body">
-              <%= render "topics/index" %>
+              <%= render partial: 'topics/index', locals:{topics: @user.topics.order(created_at: :desc)} %>
             </div>
             <div id="topic-modal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
             </div>
           </div>
         </div>
       </div>
-      <div class="tab-pane" id="friends">
-        <div class="user-follow">
-          <div class="user-friends">
-            <%= render partial: 'follow_index', locals: { users: (@user.followed_users)&(@user.followers) } %>
+      <% if @user.id==current_user.id %>
+        <div class="tab-pane" id="myfriends">
+          <div class="user-follow">
+            <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") } %>
           </div>
         </div>
-      </div>
-      <% if @user.id==current_user.id %>
         <div class="tab-pane" id="followers">
           <div class="user-follow">
-            <div class="user-follower">
-              <%= render partial: 'follow_index', locals: { users: (@user.followers)-(@user.followed_users) } %>
-            </div>
+            <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id NOT IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") } %>
           </div>
         </div>
         <div class="tab-pane" id="followed_users">
           <div class="user-follow">
-            <div class="user-followed">
-              <%= render partial: 'follow_index', locals: { users: (@user.followed_users)-(@user.followers) } %>
-            </div>
+            <%= render partial: 'follow_index', locals: { users: @followed_users = @user.followed_users.where("users.id NOT IN(SELECT follower_id FROM relationships WHERE followed_id = ?)",@user.id).order("relationships.created_at DESC") } %>
+          </div>
+        </div>
+      <% else %>
+        <div class="tab-pane" id="friends">
+          <div class="user-follow">
+            <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("users.id") } %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<%= link_to '戻る', :back %>
