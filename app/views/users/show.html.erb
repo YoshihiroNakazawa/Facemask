@@ -2,11 +2,11 @@
   <div class="wrapper col-md-10 col-md-offset-1">
     <div class="user-header-background">
       <div class="user-header">
-        <div class="user-profile-image" >
-          <%= render partial: 'profileimage', locals: { user: @user } %>
-        </div>
-        <h2><%= @user.name %></h2>
       </div>
+      <div class="user-profile-image" >
+        <%= render partial: 'profileimage', locals: { user: @user } %>
+      </div>
+      <h2><%= @user.name %></h2>
     </div>
   </div>
 </div>
