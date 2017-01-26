@@ -1,0 +1,6 @@
+<% if notice != nil || alert != nil %>
+  <div class="alert alert-warning alert-dismissable">
+    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <%= notice %><%= alert %>
+  </div>
+<% end %>
