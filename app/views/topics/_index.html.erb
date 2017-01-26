@@ -11,10 +11,12 @@
           <% end %>
         </div>
       <% end %>
-      <div class="image-profile" >
-        <%= render partial: 'profileimage', locals: { user: topic.user } %>
-      </div>
-      <div class="topic-author"><%= topic.user.name %></div>
+      <%= link_to user_path(topic.user) do %>
+        <div class="image-profile" >
+          <%= render partial: 'profileimage', locals: { user: topic.user } %>
+        </div>
+        <div class="topic-author"><%= topic.user.name %></div>
+      <% end %>
       <div class="created-at"><%= topic.created_at.strftime("%-m月%-d日 %H:%M") %></div>
     </div>
     <div class="panel-body">

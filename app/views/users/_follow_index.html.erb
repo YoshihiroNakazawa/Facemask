@@ -1,10 +1,12 @@
 <ul>
   <% users.each do |user| %>
     <li>
-      <div class="users-image" >
-        <%= render partial: 'profileimage', locals: { user: user } %>
-      </div>
-      <p><%= user.name %></p>
+      <%= link_to user_path(user) do %>
+        <div class="users-image" >
+          <%= render partial: 'profileimage', locals: { user: user } %>
+        </div>
+        <p><%= user.name %></p>
+      <% end %>
       <% if user.id != current_user.id %>
         <%= render partial: 'follow_form', locals: { user: user } %>
       <% end %>

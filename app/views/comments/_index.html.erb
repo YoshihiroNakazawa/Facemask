@@ -1,10 +1,12 @@
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
-    <div class="image-profile" >
-      <%= render partial: 'profileimage', locals: { user: comment.user } %>
-    </div>
-    <div class="comment-info">
+    <%= link_to user_path(comment.user) do %>
+      <div class="image-profile" >
+        <%= render partial: 'profileimage', locals: { user: comment.user } %>
+      </div>
       <p class="comment-author"><%= comment.user.name %></p>
+    <% end %>
+    <div class="comment-info">
       <div id = "<%= comment.id %>">
         <p class="comment-content"><%= comment.content %></p>
         <div class="clearfix"></div>

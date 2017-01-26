@@ -44,9 +44,18 @@
 
 .user-follow {
   li {
-    list-style: none;
     float: left;
     width: 50%;
+  }
+}
+
+.users-index {
+  margin-top: 20px;
+}
+
+.user-follow, .users-index {
+  li {
+    list-style: none;
     height: 100px;
     background-color: white;
     border: 1px solid #999;
