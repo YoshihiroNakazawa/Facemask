@@ -23,21 +23,34 @@
           <button type="submit" class="fa fa-search btn btn-default"></button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <%= link_to  user_path(current_user) do %>
-            <li class="icon-profile"><%= profile_img(current_user) %></li>
-            <li class="text-profile"><%= current_user.name %></li>
-          <% end %>
+          <li>
+            <%= link_to user_path(current_user), class:"bar-profile", style:"padding-top:10px;padding-bottom:10px" do %>
+              <div class="bar-profile-div">
+                <i><%= profile_img(current_user) %></i>
+                <i class="text-profile"><%= current_user.name %></i>
+              </div>
+            <% end %>
+            <div style="clear:both;position:relative;"></div>
+          </li>
+
+
           <li><%= link_to 'ホーム', root_path %></li>
           <li><%= link_to '友達を検索', users_path %></li>
-          <%= link_to users_path, class: "navbar-brand" do %>
-           <i class="fa fa-user-plus fa-1x icon-font"></i>
-          <% end %>
-          <%= link_to conversations_path, class: "navbar-brand" do %>
-           <i class="fa fa-comments fa-1x icon-font"></i>
-          <% end %>
-          <%= link_to notifications_index_path, class: "navbar-brand" do %>
-            <i class="fa fa-globe fa-1x icon-font"><span id="unread_count"> <%= @notifications_count %></span></i>
-          <% end %>
+          <li>
+            <%= link_to users_path do %>
+             <i class="fa fa-user-plus fa-1x icon-font"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to conversations_path do %>
+             <i class="fa fa-comments fa-1x icon-font"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to notifications_index_path do %>
+              <i class="fa fa-globe fa-1x icon-font"><span id="unread_count"> <%= @notifications_count %></span></i>
+            <% end %>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
             <ul class="dropdown-menu">

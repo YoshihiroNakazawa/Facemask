@@ -22,23 +22,30 @@ header {
     margin-top: -10px;
   }
 }
-.navbar-nav {
-  .icon-profile {
-    @include profile-image-size(30px);
-    display: block;
+.bar-profile {
+  position: relative;
+  left: 50%;
+  float: left;
+  //padding-top: 10px;
+  //padding-bottom: 10px;
+  .bar-profile-div {
+    position: relative;
+    left: -50%;
     float: left;
-    margin-top: 10px;
+  }
+  img {
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
   }
   .text-profile {
-    display: block;
-    float: left;
-    margin-top: 15px;
-    margin-left: 5px;
     color: #ccc;
     &:hover {
       color: white;
     }
   }
+}
+.navbar-nav {
   .icon-font {
     color: black;
     &:hover {
