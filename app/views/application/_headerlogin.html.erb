@@ -16,11 +16,13 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="友達を見つける">
-          </div>
-          <button type="submit" class="fa fa-search btn btn-default"></button>
+        <form class="navbar-form navbar-left" action="/users" role="search">
+          <%= form_for @form, url: users_path, method: 'get' do |f| %>
+            <div class="form-group">
+              <%= f.text_field :name, class: "form-control", placeholder: '友達を見つける' %>
+            </div>
+            <button type="submit" class="fa fa-search btn btn-default"></button>
+          <% end %>
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li>
