@@ -5,7 +5,7 @@
       <% @notifications.each do |notification| %>
         <li>
           <%= link_to user_path(notification.comment.user) do %>
-            <div class="image-profile" style="width:20px;" >
+            <div class="image-profile" >
               <%= render partial: 'profileimage', locals: { user: notification.comment.user } %>
             </div>
           <% end %>

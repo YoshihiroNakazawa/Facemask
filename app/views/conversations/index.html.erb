@@ -1,16 +1,19 @@
-<div>
-  <table>
-    <thead>
-      <h2>メッセージ一覧</h2>
-    </thead>
-    <tbody>
+<div class="child row">
+  <div class="col-md-6 col-md-offset-3 notifications-index">
+    <h2>過去の会話相手</h2>
+    <ul>
       <% @conversations.each do |conversation| %>
-        <td>
-          <% if conversation.target_user(current_user).present? %>
-            <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
-          <% end %>
-        </td>
+        <% if conversation.target_user(current_user).present? %>
+          <li>
+            <%= link_to conversation_messages_path(conversation) do %>
+              <div class="image-profile" style="width:40px;" >
+                <%= render partial: 'profileimage', locals: { user: conversation.target_user(current_user) } %>
+              </div>
+              <%= conversation.target_user(current_user).name %>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
+    </ul>
+  </div>
 </div>

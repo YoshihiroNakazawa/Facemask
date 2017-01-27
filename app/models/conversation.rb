@@ -9,9 +9,9 @@ class Conversation < ActiveRecord::Base
 
   def target_user(current_user)
     if sender_id == current_user.id
-      User.find(recipient_id)
+      User.find_by_id(recipient_id)
     elsif recipient_id == current_user.id
-      User.find(sender_id)
+      User.find_by_id(sender_id)
     end
   end
 end
