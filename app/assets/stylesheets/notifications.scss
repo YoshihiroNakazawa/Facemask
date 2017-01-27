@@ -1,3 +1,36 @@
-// Place all the styles related to the notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "topics";
+
+.notifications-index {
+  background-color: white;
+  text-align: left;
+  h4 {
+    padding: 20px 20px;
+    border-bottom: 1px solid #999;
+    font-weight: bold;
+  }
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  li {
+    .image-profile {
+      @include profile-image-size(25px);
+      display: block;
+      float: left;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    .message {
+      display: block;
+      float: left;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    .time {
+      clear: both;
+      margin-left: 40px;
+    }
+    min-height: 70px;
+    border-bottom: 1px solid #999;
+  }
+}
