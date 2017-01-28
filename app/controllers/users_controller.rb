@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    @users = User.all.includes()
     if params[:user_find_form].present?
       @users = @users.where( "name LIKE ?", "%#{params[:user_find_form][:name]}%" ) if params[:user_find_form][:name].present?
     end

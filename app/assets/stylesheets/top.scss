@@ -8,7 +8,7 @@ body {
 header {
   width: 100%;
   //background-color: #102c70;
-  background-color: #3b5998;
+  //background-color: #3b5998;
 }
 
 .navbar-brand {
@@ -65,7 +65,8 @@ header {
   padding: 0px 25px;
 }
 .navbar {
-  background-color: transparent;
+  //background-color: transparent;
+  background-color: #3b5998;
   color: white;
   margin-bottom: 0px;
 }
@@ -119,5 +120,5 @@ footer {
 }
 
 .container {
-  padding-bottom: 85px;
+  //padding-bottom: 85px;
 }
