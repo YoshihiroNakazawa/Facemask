@@ -1,7 +1,7 @@
 <div id="follow_form_<%= user.id %>">
-  <% if current_user.following?(user) %>
+  <% if (user.attributes["followed"] == nil && current_user.following?(user)) || user.attributes["followed"] %>
     <%= form_for(current_user.relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
-      <% if user.following?(current_user) %>
+      <% if (user.attributes["follower"] == nil && user.following?(current_user)) || user.attributes["follower"] %>
         <%= f.submit "友達解消", class: "btn btn-xs" %>
       <% else %>
         <%= f.submit "申請取消", class: "btn btn-xs" %>
@@ -10,7 +10,7 @@
   <% else %>
     <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
       <%= f.hidden_field :followed_id %>
-      <% if user.following?(current_user) %>
+      <% if (user.attributes["follower"] == nil && user.following?(current_user)) || user.attributes["follower"] %>
         <%= f.submit "申請承認", class: "btn btn-xs btn-blue", data: { confirm: '友達には覆面を脱いで素顔を見せます。よろしいですか？' } %>
       <% else %>
         <%= f.submit "友達申請", class: "btn btn-xs btn-blue", data: { confirm: '友達には覆面を脱いで素顔を見せます。よろしいですか？' } %>
