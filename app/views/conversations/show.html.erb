@@ -1,0 +1,20 @@
+<div class="child row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel conversations-body">
+      <div class="panel-body">
+        <div class="image-profile" >
+          <%= render partial: 'profileimage', locals: { user: @target_user } %>
+        </div>
+        <div class="target_user"><%= @target_user.name %></div>
+      </div>
+      <div class="panel-footer">
+        <div id="messages_area">
+          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation } %>
+        </div>
+        <div id="messages_form">
+          <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

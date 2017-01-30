@@ -28,10 +28,11 @@ class CommentsController < ApplicationController
 
   def update
     @topic = @comment.topic
+    @comment_new = current_user.comments.build(comment_params)
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to topic_path(@topic), notice: 'コメントを更新しました。' }
-        format.js { render :index }
+        format.js { render :index_new }
       else
         format.html { render :edit }
       end

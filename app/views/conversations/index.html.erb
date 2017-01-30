@@ -6,7 +6,7 @@
         <% if conversation.target_user(current_user).present? %>
           <li>
             <div class="user-info">
-              <%= link_to conversation_messages_path(conversation) do %>
+              <%= link_to conversation_path(conversation) do %>
                 <div class="image-profile" >
                   <%= render partial: 'profileimage', locals: { user: conversation.target_user(current_user) } %>
                 </div>
@@ -29,6 +29,10 @@
               <p class="unread-info">
                 未読数:<%= conversation.unread_count %>
               </p>
+            </div>
+            <div class="buttons">
+              <%= link_to '会話を始める', conversation_path(conversation), class: "btn btn-default btn-xs" %>
+              <%= link_to 'メッセージ一覧', conversation_messages_path(conversation), class: "btn btn-default btn-xs" %>
             </div>
             <div class="clearfix"></div>
           </li>

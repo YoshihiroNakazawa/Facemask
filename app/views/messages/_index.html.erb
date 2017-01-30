@@ -1,0 +1,16 @@
+<% messages.each do |message| %>
+  <% unless message.id.nil? %>
+    <%= link_to user_path(message.user) do %>
+      <div class="image-profile" >
+        <%= render partial: 'profileimage', locals: { user: message.user } %>
+      </div>
+      <p class="message-sender"><%= message.user.name %></p>
+    <% end %>
+    <div class="message-info">
+      <div id = "<%= message.id %>">
+        <p class="message-body"><%= message.body %></p>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -27,10 +27,10 @@ class TopicsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     @topic.save
+    @topics = Topic.where(user_id: @user.id).order(created_at: :desc)
   end
 
   def update

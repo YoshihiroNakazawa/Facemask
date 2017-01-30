@@ -1,0 +1,2 @@
+$("#messages_area").html("<%= j(render 'messages/index', { messages: @message.conversation.messages.last(10), conversation: @message.conversation }) %>")
+$(':text').val('')

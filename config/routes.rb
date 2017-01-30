@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :relationships, only: [:create, :destroy]
-  resources :conversations do
+  resources :conversations, only: [:index, :create, :show] do
     resources :messages
   end
   root 'top#index'
