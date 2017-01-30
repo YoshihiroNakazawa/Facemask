@@ -1,16 +1,36 @@
 <div class="child row">
-  <div class="col-md-6 col-md-offset-3 notifications-index">
-    <h2>過去の会話相手</h2>
+  <div class="col-md-6 col-md-offset-3 conversations-index">
+    <h4>過去の会話相手</h4>
     <ul>
       <% @conversations.each do |conversation| %>
         <% if conversation.target_user(current_user).present? %>
           <li>
-            <%= link_to conversation_messages_path(conversation) do %>
-              <div class="image-profile" style="width:40px;" >
-                <%= render partial: 'profileimage', locals: { user: conversation.target_user(current_user) } %>
-              </div>
-              <%= conversation.target_user(current_user).name %>
-            <% end %>
+            <div class="user-info">
+              <%= link_to conversation_messages_path(conversation) do %>
+                <div class="image-profile" >
+                  <%= render partial: 'profileimage', locals: { user: conversation.target_user(current_user) } %>
+                </div>
+                <%= conversation.target_user(current_user).name %>
+              <% end %>
+            </div>
+            <div class="message-info">
+              <p class="send-info">
+                送信数:<%= conversation.send_count %>
+                <% if conversation.send_count > 0 %>
+                  (最新:<%= conversation.last_send_time.strftime("%-m月%-d日 %-H:%M") %>)
+                <% end %>
+              </p>
+              <p class="recieve-info">
+                受信数:<%= conversation.recieve_count %>
+                <% if conversation.recieve_count > 0 %>
+                  (最新:<%= conversation.last_recieve_time.strftime("%-m月%-d日 %-H:%M") %>)
+                <% end %>
+              </p>
+              <p class="unread-info">
+                未読数:<%= conversation.unread_count %>
+              </p>
+            </div>
+            <div class="clearfix"></div>
           </li>
         <% end %>
       <% end %>

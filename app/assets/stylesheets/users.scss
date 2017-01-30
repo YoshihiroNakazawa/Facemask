@@ -51,21 +51,44 @@
 
 .users-index {
   margin-top: 20px;
-}
-
-.user-follow, .users-index {
+  ul {
+    padding-left: 0px;
+  }
   li {
     list-style: none;
-    height: 100px;
-    background-color: white;
     border: 1px solid #999;
 
     .users-image {
       @include profile-image-size(50px);
       float: left;
-      margin-left: 10px;
+      margin: 25px 10px;
+    }
+    p {
+      float: left;
       margin-top: 25px;
+    }
+
+    .btn {
+      float: right;
+      margin-top: 50px;
       margin-right: 10px;
+    }
+  }
+  background-color: white;
+}
+
+.user-follow {
+  ul {
+    padding-left: 0px;
+  }
+  li {
+    list-style: none;
+    border: 1px solid #999;
+    background-color: white;
+    .users-image {
+      @include profile-image-size(50px);
+      float: left;
+      margin: 25px 10px;
     }
     p {
       float: left;
