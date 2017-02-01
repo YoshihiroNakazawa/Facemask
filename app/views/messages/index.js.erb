@@ -1,2 +1,8 @@
-$("#messages_area").html("<%= j(render 'messages/index', { messages: @message.conversation.messages.last(10), conversation: @message.conversation }) %>")
+$("#message-errors").html("")
+<% if @message.errors.any? %>
+  <% @message.errors.full_messages.each do |message| %>
+    $("#message-errors").append("<%= message.html_safe %>")
+  <% end %>
+<% end %>
+$("#messages_area").html("<%= j(render 'messages/index', { messages: @message.conversation.messages.last(10), conversation: @message.conversation, other_user: current_user }) %>")
 $(':text').val('')

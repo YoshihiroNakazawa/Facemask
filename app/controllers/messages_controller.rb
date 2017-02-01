@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  include ActionView::Helpers::JavaScriptHelper
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
@@ -32,15 +33,19 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.build(message_params)
     respond_to do |format|
       if @message.save
-        #format.html { redirect_to conversation_path(@conversation), notice: 'メッセージを送信しました。' }
-        format.js { render :index }
-        unless @message.user_id == current_user.id
-          Pusher.trigger("user_#{@message.user_id}_channel", 'message_created', {
-            message: @message
+        if @message.user_id == current_user.id
+          @target_user = @conversation.target_user(current_user)
+          @text = render_to_string(partial:'messages/index', locals: { messages: @conversation.messages.last(10), conversation: @conversation, other_user: @target_user }, layout: false )
+          Pusher.trigger("user_#{@target_user.id}_channel", 'message_user', {
+            message: @message.user_id
+          })
+          Pusher.trigger("user_#{@target_user.id}_channel", 'render_string', {
+            message: @text
           })
         end
+        format.js { render :index }
       else
-        format.html { render :index }
+        format.js { render :index }
       end
     end
   end

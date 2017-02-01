@@ -1,19 +1,32 @@
+<script>
+  var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+  channel.bind('message_user', function(data) {
+    if (data.message==<%= @target_user.id %>) {
+      channel.bind('render_string', function(data) {
+        $('#messages_area').html(data.message);
+      });
+    }
+  });
+</script>
 <div class="child row">
   <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel conversations-body">
+    <div class="panel messages-body">
       <div class="panel-body">
-        <div class="image-profile" >
-          <%= render partial: 'profileimage', locals: { user: @target_user } %>
-        </div>
-        <div class="target_user"><%= @target_user.name %></div>
+        <%= link_to user_path( @target_user ) do %>
+          <div class="image-profile" >
+            <%= render partial: 'profileimage', locals: { user: @target_user } %>
+          </div>
+          <h4 class="target_user"><%= @target_user.name %></h4>
+        <% end %>
       </div>
       <div class="panel-footer">
         <div id="messages_area">
-          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation } %>
+          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation, other_user: current_user } %>
         </div>
         <div id="messages_form">
           <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>
         </div>
+        <div id="message-errors"></div>
       </div>
     </div>
   </div>

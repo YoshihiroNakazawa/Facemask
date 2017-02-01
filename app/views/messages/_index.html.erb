@@ -1,14 +1,11 @@
 <% messages.each do |message| %>
   <% unless message.id.nil? %>
-    <%= link_to user_path(message.user) do %>
-      <div class="image-profile" >
-        <%= render partial: 'profileimage', locals: { user: message.user } %>
-      </div>
-      <p class="message-sender"><%= message.user.name %></p>
-    <% end %>
-    <div class="message-info">
+    <p class="message-sender"><%= message.user.name %></p>
+    <p class="created-at"><%= message.created_at.strftime("%-m月%-d日 %-H:%-M") %></p>
+    <div class="clearfix"></div>
+    <div class="message-body">
       <div id = "<%= message.id %>">
-        <p class="message-body"><%= message.body %></p>
+        <p><%= message.body %></p>
         <div class="clearfix"></div>
       </div>
     </div>

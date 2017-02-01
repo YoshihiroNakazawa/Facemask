@@ -6,7 +6,7 @@
         <% if conversation.target_user(current_user).present? %>
           <li>
             <div class="user-info">
-              <%= link_to conversation_path(conversation) do %>
+              <%= link_to user_path(conversation.target_user(current_user)) do %>
                 <div class="image-profile" >
                   <%= render partial: 'profileimage', locals: { user: conversation.target_user(current_user) } %>
                 </div>
