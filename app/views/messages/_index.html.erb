@@ -1,12 +1,21 @@
 <% messages.each do |message| %>
   <% unless message.id.nil? %>
-    <p class="message-sender"><%= message.user.name %></p>
-    <p class="created-at"><%= message.created_at.strftime("%-m月%-d日 %-H:%-M") %></p>
-    <div class="clearfix"></div>
-    <div class="message-body">
-      <div id = "<%= message.id %>">
-        <p><%= message.body %></p>
-        <div class="clearfix"></div>
+    <div class="messages-item">
+      <% if read_user.id != message.user.id && message.read == false %>
+        <div class="message-read">
+          <%= link_to message_path( message, readonly: readonly ), method: :put, remote: true do %>
+            <p>未読</p>
+          <% end %>
+        </div>
+      <% end %>
+      <p class="message-sender"><%= message.user.name %></p>
+      <p class="created-at"><%= message.created_at.strftime("%-m月%-d日 %-H:%-M") %></p>
+      <div class="clearfix"></div>
+      <div class="message-body">
+        <div id = "<%= message.id %>">
+          <p><%= message.body %></p>
+          <div class="clearfix"></div>
+        </div>
       </div>
     </div>
   <% end %>

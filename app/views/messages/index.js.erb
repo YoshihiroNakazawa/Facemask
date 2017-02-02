@@ -4,5 +4,5 @@ $("#message-errors").html("")
     $("#message-errors").append("<%= message.html_safe %>")
   <% end %>
 <% end %>
-$("#messages_area").html("<%= j(render 'messages/index', { messages: @message.conversation.messages.last(10), conversation: @message.conversation, other_user: current_user }) %>")
+$("#messages_area").html("<%= j(render 'messages/index', { messages: @messages, conversation: @conversation, read_user: current_user, readonly: @readonly }) %>")
 $(':text').val('')

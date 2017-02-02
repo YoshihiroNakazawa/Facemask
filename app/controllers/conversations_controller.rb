@@ -32,6 +32,7 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages.last(10)
     @message = @conversation.messages.build
     @target_user = @conversation.target_user(current_user)
+    @readonly = false
   end
 
   private

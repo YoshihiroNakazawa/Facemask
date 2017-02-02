@@ -21,7 +21,7 @@
       </div>
       <div class="panel-footer">
         <div id="messages_area">
-          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation, other_user: current_user } %>
+          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation, read_user: current_user, readonly: @readonly } %>
         </div>
         <div id="messages_form">
           <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>

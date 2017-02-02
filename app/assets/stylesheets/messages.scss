@@ -46,3 +46,39 @@
     }
   }
 }
+
+.messages-item {
+  text-align: left;
+  border-bottom: 1px solid #999;
+  .message-sender {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    font-size: x-small;
+    font-weight: bold;
+  }
+  .created-at {
+    display: block;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    font-size: x-small;
+  }
+  .message-body {
+    display: block;
+    margin-left: 5px;
+  }
+  .message-read {
+    display: block;
+    float: right;
+    font-size: x-small;
+    p {
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+  }
+}
