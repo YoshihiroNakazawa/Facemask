@@ -2,6 +2,10 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
+      topic: "トピック"
+      comment: "コメント"
+      notification: "お知らせ"
+      message: "メッセージ"
     attributes:
       user:
         title: "タイトル"
@@ -12,5 +16,10 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      topic:
+        title: "タイトル"
+        content: "内容"
+      comment:
+        content: "コメント"
       message:
         body: "メッセージ"
