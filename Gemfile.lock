@@ -421,6 +421,7 @@ DEPENDENCIES
   fog
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener_web
   omniauth
   omniauth-facebook

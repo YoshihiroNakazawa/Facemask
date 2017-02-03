@@ -2,6 +2,17 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    if params[:page].present?
+      page = params[:page]
+    else
+      page = 1
+    end
+    if params[:user_find_form].present?
+      @users = User.where("name LIKE ?","%#{params[:user_find_form][:name]}%").order("id").page(params[:page])
+    else
+      @users = User.all.order("id").page(params[:page])
+    end
+=begin
     if params[:user_find_form].present?
       @users = User.find_by_sql(["SELECT users.*,
         CASE WHEN A.id IS NULL THEN FALSE ELSE TRUE END AS follower,
@@ -19,6 +30,7 @@ class UsersController < ApplicationController
         LEFT OUTER JOIN relationships AS B ON (B.followed_id=users.id AND B.follower_id=?)
         WHERE users.id<>?",current_user.id,current_user.id,current_user.id])
     end
+=end
   end
 
   def show

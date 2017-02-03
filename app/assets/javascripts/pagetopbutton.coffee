@@ -11,4 +11,4 @@ ready = ->
     $('html, body').animate({ scrollTop: 0 }, 'slow')
 
 $(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)

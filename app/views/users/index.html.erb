@@ -1,7 +1,10 @@
 <div class="child row">
   <div class="wrapper col-md-6 col-md-offset-3 col-sm-12">
-    <div class="users-index">
-      <%= render partial: 'user_index', locals: { users: @users } %>
+    <div id="users" class="users-index">
+      <ul class="page">
+        <%= render @users %>
+      </ul>
     </div>
+    <%= paginate @users %>
   <div>
 </div>
