@@ -29,7 +29,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.last(10)
+    @messages = @conversation.messages.order("id").last(10)
     @message = @conversation.messages.build
     @target_user = @conversation.target_user(current_user)
     @readonly = false

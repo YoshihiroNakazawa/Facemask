@@ -4,7 +4,9 @@ class Message < ActiveRecord::Base
 
   validates_presence_of :body, :conversation_id, :user_id
 
+  paginates_per 15
+
   def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
+    created_at.strftime("%Y年%-m月%-d日 %-H:%M")
   end
 end

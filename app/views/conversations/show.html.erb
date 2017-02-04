@@ -3,7 +3,8 @@
   channel.bind('message_user', function(data) {
     if (data.message==<%= @target_user.id %>) {
       channel.bind('render_string', function(data) {
-        $('#messages_area').html(data.message);
+        $('#messages_area').append(data.message);
+        $('html, body').animate({ scrollTop: $(document).height() } );
       });
     }
   });
@@ -21,7 +22,7 @@
       </div>
       <div class="panel-footer">
         <div id="messages_area">
-          <%= render partial: 'messages/index', locals: { messages: @messages, conversation: @conversation, read_user: current_user, readonly: @readonly } %>
+          <%= render partial: 'messages/message', collection: @messages, locals: { conversation: @conversation, read_user: current_user, readonly: @readonly } %>
         </div>
         <div id="messages_form">
           <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>

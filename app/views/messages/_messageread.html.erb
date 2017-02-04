@@ -1,0 +1,5 @@
+<% if read_user.id != message.user.id && message.read == false %>
+  <%= link_to message_path( message, readonly: readonly ), method: :put, remote: true do %>
+    <p>未読</p>
+  <% end %>
+<% end %>

@@ -3,14 +3,14 @@ class UsersController < ApplicationController
 
   def index
     if params[:page].present?
-      page = params[:page]
+      page_index = params[:page]
     else
-      page = 1
+      page_index = 1
     end
     if params[:user_find_form].present?
-      @users = User.where("name LIKE ?","%#{params[:user_find_form][:name]}%").order("id").page(params[:page])
+      @users = User.where("name LIKE ?","%#{params[:user_find_form][:name]}%").order("id").page(page_index)
     else
-      @users = User.all.order("id").page(params[:page])
+      @users = User.all.order("id").page(page_index)
     end
 =begin
     if params[:user_find_form].present?

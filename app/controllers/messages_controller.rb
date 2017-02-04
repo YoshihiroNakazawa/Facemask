@@ -5,44 +5,41 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
 
   def index
-    @messages = @conversation.messages
+    if params[:page].present?
+      page_index = params[:page]
+    else
+      page_index = 1
+    end
+    @messages = @conversation.messages.order(id: :desc).page(page_index)
     @target_user = @conversation.target_user(current_user)
     @readonly = true
   end
 
   def create
-    @messages = @conversation.messages.last(10)
     @message = @conversation.messages.build(message_params)
     respond_to do |format|
-      @message.save
-      if @message.user_id == current_user.id
-        @target_user = @conversation.target_user(current_user)
-        @text = render_to_string(partial:'messages/index', locals: { messages: @messages, conversation: @conversation, read_user: @target_user, readonly: false }, layout: false )
-        Pusher.trigger("user_#{@target_user.id}_channel", 'message_user', {
-          message: @message.user_id
-        })
-        Pusher.trigger("user_#{@target_user.id}_channel", 'render_string', {
-          message: @text
-        })
+      if @message.save
+        if @message.user_id == current_user.id
+          @target_user = @conversation.target_user(current_user)
+          @text = render_to_string(partial:'messages/message', locals: { message: @message, conversation: @conversation, read_user: @target_user, readonly: false }, layout: false )
+          Pusher.trigger("user_#{@target_user.id}_channel", 'message_user', {
+            message: @message.user_id
+          })
+          Pusher.trigger("user_#{@target_user.id}_channel", 'render_string', {
+            message: @text
+          })
+        end
       end
-      format.js { render :index }
+      @messages = @conversation.messages.order("id").last(10)
+      format.js { render :create }
     end
   end
 
   def update
-    @conversation = @message.conversation
+    @read_user = current_user
     @readonly = ActiveRecord::Type::Boolean.new.type_cast_from_user(params[:readonly])
-    @target_user = @conversation.target_user(current_user)
-    @message.read = true;
-    respond_to do |format|
-      @message.save
-      if @readonly
-        @messages = @conversation.messages
-      else
-        @messages = @conversation.messages.last(10)
-      end
-      format.js { render :index }
-    end
+    @message.read = true
+    @message.save
   end
 
   private

@@ -1,0 +1,10 @@
+$("#message-errors").html("")
+<% if @message.errors.any? %>
+  <% @message.errors.full_messages.each do |message| %>
+    $("#message-errors").append("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $("#messages_area").append("<%= j(render 'messages/message', { message: @message, read_user: current_user, readonly: false }) %>")
+<% end %>
+$(':text').val('')
+$('html, body').animate({ scrollTop: $(document).height() } )
