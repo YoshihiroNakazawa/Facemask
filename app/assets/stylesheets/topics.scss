@@ -2,8 +2,17 @@
 
 .left-col {
   .image-profile {
-    @include profile-image-size(20px);
-    display: block;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    img {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      transform: translate(-50%,-50%);
+    }
     float: left;
     margin-top: 10px;
     margin-left: 5px;
@@ -18,7 +27,17 @@
 
 .panel-topic-new {
   .image-profile {
-    @include profile-image-size(50px);
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    img {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      transform: translate(-50%,-50%);
+    }
     display: block;
     float: left;
     margin-top: 5px;

@@ -28,8 +28,12 @@
           <li>
             <%= link_to user_path(current_user), class:"bar-profile", style:"padding-top:10px;padding-bottom:10px" do %>
               <div class="bar-profile-div">
-                <i><%= profile_img(current_user) %></i>
-                <i class="text-profile"><%= current_user.name %></i>
+                <div class="profile-image">
+                  <i><%= profile_img(current_user) %></i>
+                </div>
+                <div class="text-profile">
+                  <i><%= current_user.name %></i>
+                </div>
               </div>
             <% end %>
             <div style="clear:both;position:relative;"></div>

@@ -18,7 +18,12 @@ header {
     margin-top: -20px;
   }
   .icon-mask {
-    @include profile-image-size(40px);
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
     margin-top: -10px;
   }
 }
@@ -30,18 +35,30 @@ header {
   //padding-bottom: 10px;
   .bar-profile-div {
     position: relative;
-    left: -50%;
+    left: -75%;
     float: left;
-  }
-  img {
-    overflow: hidden;
-    width: 30px;
-    height: 30px;
-  }
-  .text-profile {
-    color: #ccc;
-    &:hover {
-      color: white;
+    .profile-image {
+      float: left;
+      overflow: hidden;
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: auto;
+        transform: translate(-50%,-50%);
+      }
+    }
+    .text-profile {
+      float: left;
+      margin-top: 5px;
+      color: #ccc;
+      &:hover {
+        color: white;
+      }
     }
   }
 }

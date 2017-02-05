@@ -1,7 +1,7 @@
 <% if user.id==current_user.id || (user.attributes["follower"]==nil && user.following?(current_user)) || user.attributes["follower"]  %>
-  <%= profile_img(user) if profile_img(user) %>
+  <div class="sugao"><%= profile_img(user) if profile_img(user) %></div>
 <% else %>
-  <div style="position: relative;">
+  <div class="fukumen" style="position: relative;">
     <% uid = user.id %>
     <%= image_tag "base#{(uid%6)+1}.png", style: "position: absolute; left: 0px; top: 0px;" %>
     <% uid /= 6 %>

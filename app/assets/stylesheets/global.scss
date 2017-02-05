@@ -31,11 +31,26 @@
 }
 
 @mixin profile-image-size($size) {
-  width: $size;
-  height: $size;
-  img {
+  .sugao {
+    width: $size;
+    height: $size;
     overflow: hidden;
-    width: 100%;
+    img {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: auto;
+      transform: translate(-50%,-50%);
+    }
+  }
+  .fukumen {
+    width: $size;
+    height: $size;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
   }
 }
 
