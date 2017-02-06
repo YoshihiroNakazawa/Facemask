@@ -55,23 +55,31 @@
         <% if @user.id==current_user.id %>
           <div class="tab-pane" id="myfriends">
             <div class="user-follow">
-              <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") } %>
+              <ul class="page">
+                <%= render @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") %>
+              </ul>
             </div>
           </div>
           <div class="tab-pane" id="followers">
             <div class="user-follow">
-              <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id NOT IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") } %>
+              <ul class="page">
+                <%= render @user.followers.where("users.id NOT IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("relationships.created_at DESC") %>
+              </ul>
             </div>
           </div>
           <div class="tab-pane" id="followed_users">
             <div class="user-follow">
-              <%= render partial: 'follow_index', locals: { users: @followed_users = @user.followed_users.where("users.id NOT IN(SELECT follower_id FROM relationships WHERE followed_id = ?)",@user.id).order("relationships.created_at DESC") } %>
+              <ul class="page">
+                <%= render @user.followed_users.where("users.id NOT IN(SELECT follower_id FROM relationships WHERE followed_id = ?)",@user.id).order("relationships.created_at DESC") %>
+              </div>
             </div>
           </div>
         <% else %>
           <div class="tab-pane" id="friends">
             <div class="user-follow">
-              <%= render partial: 'follow_index', locals: { users: @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("users.id") } %>
+              <ul class="page">
+                <%= render @user.followers.where("users.id IN(SELECT followed_id FROM relationships WHERE follower_id = ?)",@user.id).order("users.id") %>
+              </div>
             </div>
           </div>
         <% end %>

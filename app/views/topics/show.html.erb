@@ -5,10 +5,12 @@
     <div class="col-sm-6">
       <div class="panel topics-body">
         <div class="panel-heading">
-          <div class="image-profile" >
-            <%= render partial: 'profileimage', locals: { user: @topic.user } %>
+          <div class="topic-author-profile">
+            <div class="image-profile" >
+              <%= render partial: 'profileimage', locals: { user: @topic.user } %>
+            </div>
+            <div class="topic-author"><%= @topic.user.name %></div>
           </div>
-          <div class="topic-author"><%= @topic.user.name %></div>
           <div class="created-at"><%= @topic.created_at.strftime("%-m月%-d日 %-H:%-M") %></div>
         </div>
         <div class="panel-body">

@@ -1,22 +1,12 @@
 @import "global";
 
-.image-profile {
-  @include profile-image-size(10px);
-  display: block;
-  float: left;
-  margin-top: 50px;
-  margin-left: 5px;
-  margin-right: 10px;
-}
-
 #comments_area {
   text-align: left;
   .image-profile {
     @include profile-image-size(25px);
     display: block;
     float: left;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-right: 5px;
   }
   .comment-author {
     display: block;
@@ -28,7 +18,7 @@
   .comment-info {
     display: block;
     margin-top: 10px;
-    margin-left: 40px;
+    margin-left: 30px;
     margin-bottom: 10px;
     font-size: small;
     .comment-content {

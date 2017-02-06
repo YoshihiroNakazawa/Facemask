@@ -1,5 +1,15 @@
 @import "global";
 
+.conversation-target {
+  text-align: left;
+  .image-profile {
+    @include profile-image-size(20px);
+    display: block;
+    float: left;
+    margin-right: 5px;
+  }
+}
+
 .messages-body {
   .panel-body {
     .image-profile {
@@ -16,14 +26,6 @@
   }
   .panel-footer {
     text-align: left;
-    .image-profile {
-      @include profile-image-size(20px);
-      display: block;
-      float: left;
-      margin-top: 5px;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
     .message-sender {
       display: block;
       float: left;

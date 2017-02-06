@@ -57,17 +57,18 @@
     margin-top: 20px;
   }
   text-align: left;
-  .image-profile {
-    @include profile-image-size(50px);
-    display: block;
-    float: left;
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 10px;
-  }
-  .topic-author {
-    margin-top: 5px;
-    margin-left: 10px;
+  .topic-author-profile {
+    .image-profile {
+      @include profile-image-size(50px);
+      display: block;
+      float: left;
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+    .topic-author {
+      margin-top: 5px;
+      margin-left: 10px;
+    }
   }
   .created-at {
     margin-top: 5px;
