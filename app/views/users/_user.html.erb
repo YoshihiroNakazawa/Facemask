@@ -9,6 +9,6 @@
     <% if user.id != current_user.id %>
       <%= render partial: 'follow_form', locals: { user: user } %>
     <% end %>
+    <div class="clearfix"></div>
   </li>
-  <div class="clearfix"></div>
 </div>

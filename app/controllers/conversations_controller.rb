@@ -32,6 +32,9 @@ class ConversationsController < ApplicationController
     @messages = @conversation.messages.order("id").last(10)
     @message = @conversation.messages.build
     @target_user = @conversation.target_user(current_user)
+    if @target_user == nil
+      redirect_to root_path
+    end
     @readonly = false
   end
 

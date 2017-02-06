@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   before_action only: [:index, :create] do
     @conversation = Conversation.find(params[:conversation_id])
   end
@@ -12,6 +13,9 @@ class MessagesController < ApplicationController
     end
     @messages = @conversation.messages.order(id: :desc).page(page_index)
     @target_user = @conversation.target_user(current_user)
+    if @target_user == nil
+      redirect_to root_path
+    end
     @readonly = true
   end
 

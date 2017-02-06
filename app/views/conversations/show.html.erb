@@ -9,25 +9,27 @@
     }
   });
 </script>
-<div class="child row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <div class="panel messages-body">
-      <div class="panel-body">
-        <%= link_to user_path( @target_user ) do %>
-          <div class="image-profile" >
-            <%= render partial: 'profileimage', locals: { user: @target_user } %>
+<div class="container-fluid">
+  <div class="child row">
+    <div class="wrapper col-sm-6 col-sm-offset-3">
+      <div class="panel messages-body">
+        <div class="panel-body">
+          <%= link_to user_path( @target_user ) do %>
+            <div class="image-profile" >
+              <%= render partial: 'profileimage', locals: { user: @target_user } %>
+            </div>
+            <h4 class="target_user"><%= @target_user.name %></h4>
+          <% end %>
+        </div>
+        <div class="panel-footer">
+          <div id="messages_area">
+            <%= render partial: 'messages/message', collection: @messages, locals: { conversation: @conversation, read_user: current_user, readonly: @readonly } %>
           </div>
-          <h4 class="target_user"><%= @target_user.name %></h4>
-        <% end %>
-      </div>
-      <div class="panel-footer">
-        <div id="messages_area">
-          <%= render partial: 'messages/message', collection: @messages, locals: { conversation: @conversation, read_user: current_user, readonly: @readonly } %>
+          <div id="messages_form">
+            <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>
+          </div>
+          <div id="message-errors"></div>
         </div>
-        <div id="messages_form">
-          <%= render partial: 'messages/form', locals: { message: @message, conversation: @conversation } %>
-        </div>
-        <div id="message-errors"></div>
       </div>
     </div>
   </div>

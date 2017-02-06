@@ -1,17 +1,19 @@
-<div class="child row">
-  <div class="left-col col-sm-3">
-    <div class="image-profile" >
-      <%= render partial: 'profileimage', locals: { user: @target_user } %>
-    </div>
-    <p class="text-profile" ><%= @target_user.name %></p>
-    <div class=clearfix></div>
-  </div>
-  <div class="col-sm-6" style="background-color: white;">
-    <div id="messages">
-      <div class="page">
-        <%= render partial: 'message', collection: @messages, locals: { conversation: @conversation, read_user: current_user, readonly: @readonly } %>
+<div class="container-fluid">
+  <div class="child row">
+    <div class="left-col col-sm-3">
+      <div class="image-profile" >
+        <%= render partial: 'profileimage', locals: { user: @target_user } %>
       </div>
+      <p class="text-profile" ><%= @target_user.name %></p>
+      <div class=clearfix></div>
     </div>
-    <%= paginate @messages %>
+    <div class="col-sm-6" style="background-color: white;">
+      <div id="messages">
+        <div class="page">
+          <%= render partial: 'message', collection: @messages, locals: { conversation: @conversation, read_user: current_user, readonly: @readonly } %>
+        </div>
+      </div>
+      <%= paginate @messages %>
+    </div>
   </div>
 </div>
