@@ -25,7 +25,7 @@
           <% end %>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li id="header-hidden1">
             <%= link_to user_path(current_user), class:"bar-profile", style:"padding-top:10px;padding-bottom:10px" do %>
               <div class="bar-profile-div">
                 <div class="profile-image">
@@ -40,8 +40,8 @@
           </li>
 
 
-          <li><%= link_to 'ホーム', root_path %></li>
-          <li><%= link_to '友達を検索', users_path %></li>
+          <li id="header-hidden2"><%= link_to 'ホーム', root_path %></li>
+          <li id="header-hidden3"><%= link_to '友達を検索', users_path %></li>
           <li>
             <%= link_to users_path do %>
              <i class="fa fa-user-plus fa-1x icon-font"></i>

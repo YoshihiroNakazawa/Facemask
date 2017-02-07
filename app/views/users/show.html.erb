@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="child row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1" style="margin-bottom: 20px;">
       <div class="user-header-background">
         <div class="user-header">
         </div>
@@ -14,18 +14,16 @@
     </div>
   </div>
   <div class="child row">
-    <div class="wrapper col-md-10 col-md-offset-1 user-btn">
+    <div class="col-md-10 col-md-offset-1 user-btn">
       <% if @user.id!=current_user.id %>
         <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: "btn btn-xs btn-blue", method: 'post' %>
         <%= render partial: 'follow_form', locals: { user: @user } %>
-      <% else %>
-        <div style="margin-top:30px">
       <% end %>
       <div class="clearfix"></div>
     </div>
   </div>
   <div class="child row">
-    <div class="wrapper col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#topics" data-toggle="tab">トピック</a></li>
         <% if @user.id==current_user.id %>
@@ -39,11 +37,11 @@
     </div>
   </div>
   <div class="child row">
-    <div class="wrapper col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
       <div class="tab-content">
         <div class="tab-pane active" id="topics">
           <div class="child row">
-            <div class="wrapper col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3">
               <div class="topics-body">
                 <%= render partial: 'topics/index', locals: {topics: @user.topics.order(created_at: :desc)} %>
               </div>

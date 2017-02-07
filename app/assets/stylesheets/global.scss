@@ -53,21 +53,3 @@
     }
   }
 }
-
-.btn-blue {
-  @include button-fukumen(#4c66a4);
-}
-
-.btn-green {
-  @include button-fukumen(#609a50);
-}
-
-.wrapper {
-  padding: 20px 20px 20px 35px;
-}
-
-.pagination {
-  li {
-    display: none;
-  }
-}

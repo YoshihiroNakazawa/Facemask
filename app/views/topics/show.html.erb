@@ -5,12 +5,15 @@
     <div class="col-sm-6">
       <div class="panel topics-body">
         <div class="panel-heading">
-          <div class="topic-author-profile">
-            <div class="image-profile" >
-              <%= render partial: 'profileimage', locals: { user: @topic.user } %>
+          <%= link_to "戻る", :back, class: "pull-right" %>
+          <%= link_to user_path(@topic.user) do %>
+            <div class="topic-author-profile">
+              <div class="image-profile" >
+                <%= render partial: 'profileimage', locals: { user: @topic.user } %>
+              </div>
+              <div class="topic-author"><%= @topic.user.name %></div>
             </div>
-            <div class="topic-author"><%= @topic.user.name %></div>
-          </div>
+          <% end %>
           <div class="created-at"><%= @topic.created_at.strftime("%-m月%-d日 %-H:%-M") %></div>
         </div>
         <div class="panel-body">

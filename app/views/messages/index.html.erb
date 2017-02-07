@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <div class="child row">
     <div class="conversation-target col-sm-3">
+      <%= link_to conversations_path do %>
+       <i class="pull-left fa fa-comments fa-1x"></i>
+      <% end %>
       <div class="image-profile" >
         <%= render partial: 'profileimage', locals: { user: @target_user } %>
       </div>
