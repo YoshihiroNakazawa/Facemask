@@ -1,8 +1,0 @@
-$("#message-errors").html("")
-<% if @message.errors.any? %>
-  <% @message.errors.full_messages.each do |message| %>
-    $("#message-errors").append("<%= message.html_safe %>")
-  <% end %>
-<% end %>
-$("#messages_area").html("<%= j(render 'messages/index', { messages: @messages, conversation: @conversation, read_user: current_user, readonly: @readonly }) %>")
-$(':text').val('')

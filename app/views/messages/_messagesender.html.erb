@@ -1,5 +1,0 @@
-<% if user.id==read_user.id || (user.attributes["follower"]==nil && user.following?(read_user)) || user.attributes["follower"]  %>
-  <%= profile_img(user) if profile_img(user) %>
-<% else %>
-  <%= render partial: 'fukumen', locals: { user_id: user.id } %>
-<% end %>
