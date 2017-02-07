@@ -1,3 +1,0 @@
-$("#comments_area").html("<%= j(render 'comments/index', { comments: @comment.topic.comments, topic: @comment.topic }) %>")
-$("#comments_form").html("<%= j(render 'comments/form', { comment: @comment_new, comments: @comment.topic.comments, topic: @comment.topic }) %>")
-$(':text').val('')

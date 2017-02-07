@@ -1,2 +1,4 @@
+$("#comment-errors").html("")
 $("#comments_form").html("")
-$("#<%= @comment.id %>").html("<%= j(render 'comments/form', { comment: @comment, topic: @comment.topic }) %>").append("<%= j(render 'comments/edit', { comment: @comment, topic: @comment.topic }) %>")
+$("#comment_"+"<%= @comment.id %>").html("<%= j(render 'comments/form_update', { comment: @comment }) %>")
+$("#comment_"+"<%= @comment.id %>").append("<%= j(render 'comments/edit', { topic: @comment.topic }) %>")

@@ -1,0 +1,10 @@
+$("#comment-errors").html("")
+<% if @comment.errors.any? %>
+  <% @comment.errors.full_messages.each do |message| %>
+    $("#comment-errors").append("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $(':text').val('')
+  $("#comment_"+"<%= @comment.id %>").html("<%= j(render 'comments/comment', { comment: @comment }) %>")
+  $("#comments_form").html("<%= j(render 'comments/form', { comment: @comment_new, topic: @topic }) %>")
+<% end %>

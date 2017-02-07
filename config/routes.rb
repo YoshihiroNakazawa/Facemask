@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show], shallow: true do
     resources :topics, except: [:index]
   end
-  resources :topics, only: [:show] do
-    resources :comments
+  resources :topics, only: [:show], shallow: true do
+    resources :comments, only: [:index, :create, :destroy, :edit, :update]
   end
   resources :relationships, only: [:create, :destroy]
   resources :conversations, only: [:index, :create, :show], shallow: true do

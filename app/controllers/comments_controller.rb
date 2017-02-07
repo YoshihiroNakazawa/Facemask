@@ -2,14 +2,21 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: [:edit, :update, :destroy]
 
+  def index
+    @topic = Topic.find(params[:topic_id])
+    @comment = @topic.comments.build
+    @comments = @topic.comments.order("id")
+    respond_to do |format|
+      format.js { render :index }
+    end
+  end
+
   def create
     @comment = current_user.comments.build(comment_params)
     @topic = @comment.topic
     @notification = @comment.notifications.build(user_id: @topic.user.id )
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to topic_path(@topic), notice: 'コメントを投稿しました。' }
-        format.js { render :index }
         unless @comment.topic.user_id == current_user.id
           Pusher.trigger("user_#{@comment.topic.user_id}_channel", 'comment_created', {
             message: 'あなたの作成したトピックにコメントが付きました'
@@ -18,9 +25,8 @@ class CommentsController < ApplicationController
         Pusher.trigger("user_#{@comment.topic.user_id}_channel", 'notification_created', {
           unread_counts: Notification.where(user_id: @comment.topic.user.id, read: false).count
         })
-      else
-        format.html { render :new }
       end
+      format.js { render :create }
     end
   end
 
@@ -29,23 +35,19 @@ class CommentsController < ApplicationController
 
   def update
     @topic = @comment.topic
-    @comment_new = current_user.comments.build(comment_params)
+    @comment_new = @topic.comments.build
+    @comment.update(comment_params)
     respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to topic_path(@topic), notice: 'コメントを更新しました。' }
-        format.js { render :index_new }
-      else
-        format.html { render :edit }
-      end
+      format.js { render :update }
     end
   end
 
   def destroy
     @topic = @comment.topic
+    @comment.destroy
+    @comments = @topic.comments.order("id")
     respond_to do |format|
-      @comment.destroy
-      format.html { redirect_to topic_path(@topic), notice: 'コメントを削除しました。' }
-      format.js { render :index }
+      format.js { render :destroy }
     end
   end
 

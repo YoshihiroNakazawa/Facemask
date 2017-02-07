@@ -1,0 +1,9 @@
+$("#comment-errors").html("")
+<% if @comment.errors.any? %>
+  <% @comment.errors.full_messages.each do |message| %>
+    $("#comment-errors").append("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $("#comments_area").append("<%= j(render 'comments/comment', { comment: @comment }) %>")
+  $(':text').val('')
+<% end %>

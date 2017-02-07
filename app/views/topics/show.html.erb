@@ -19,11 +19,12 @@
         </div>
         <div class="panel-footer">
           <div id="comments_area">
-            <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
           </div>
           <div id="comments_form">
             <%= render partial: 'comments/form', locals: { comment: @comment, topic: @topic } %>
           </div>
+          <div id="comment-errors"></div>
         </div>
       </div>
     </div>
