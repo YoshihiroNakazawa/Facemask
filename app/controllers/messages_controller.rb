@@ -26,10 +26,7 @@ class MessagesController < ApplicationController
         if @message.user_id == current_user.id
           @target_user = @conversation.target_user(current_user)
           @text = render_to_string(partial:'messages/message', locals: { message: @message, conversation: @conversation, read_user: @target_user, readonly: false }, layout: false )
-          Pusher.trigger("user_#{@target_user.id}_channel", 'message_user', {
-            message: @message.user_id
-          })
-          Pusher.trigger("user_#{@target_user.id}_channel", 'render_string', {
+          Pusher.trigger("user_#{@current_user.id}_#{@target_user.id}_channel", 'render_string', {
             message: @text
           })
         end

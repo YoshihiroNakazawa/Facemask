@@ -1,13 +1,12 @@
 <script>
-  var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
-  channel.bind('message_user', function(data) {
-    if (data.message==<%= @target_user.id %>) {
-      channel.bind('render_string', function(data) {
-        $('#messages_area').append(data.message);
-        $('html, body').animate({ scrollTop: $(document).height() } );
-      });
+  var channel = pusher.subscribe("user_<%= @target_user.id %>_<%= current_user.id %>_channel");
+  channel.bind(
+    'render_string',
+    function(data) {
+      $('#messages_area').append(data.message);
+      $('html, body').animate({ scrollTop: $(document).height() } );
     }
-  });
+  );
 </script>
 <div class="container-fluid">
   <div class="child row">

@@ -16,7 +16,7 @@
 #
 Faker::Config.locale = 'ja'
 
-100.times do |n|
+(1..100).each do |n|
   if n%6 == 0
     name = Faker::Name.name
   elsif n%6 == 1
