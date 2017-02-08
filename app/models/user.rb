@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  paginates_per 10
+  paginates_per 20
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(email: auth.info.email)
@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
     unless user
       user = User.new(
         name: auth.info.nickname,
-        image_url: auth.info.image,
+        #image_url: auth.info.image,
+        image_url: auth.extra.raw_info.profile_image_url_https,
         provider: auth.provider,
         uid: auth.uid,
         email: auth.info.email ||= "#{auth.uid}-#{auth.provider}@example.com",

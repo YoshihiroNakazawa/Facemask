@@ -14,7 +14,7 @@
               <div class="topic-author"><%= @topic.user.name %></div>
             </div>
           <% end %>
-          <div class="created-at"><%= @topic.created_at.strftime("%-m月%-d日 %-H:%-M") %></div>
+          <div class="created-at"><%= @topic.updated_at.strftime("%-m月%-d日 %-H:%-M") %></div>
         </div>
         <div class="panel-body">
           <div class="topic-title"><%= @topic.title %></div>

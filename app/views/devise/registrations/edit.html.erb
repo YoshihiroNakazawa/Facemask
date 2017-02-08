@@ -5,9 +5,14 @@
       <h3><b>アカウント編集</b></h3>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_messages! %>
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
-        </div>
+        <% if @user.provider=='twitter' %>
+          <%= f.hidden_field :email %>
+          <div style="font-size: small;">Twitterアカウントのメールアドレスは取得していません</div>
+        <% else %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
+          </div>
+        <% end %>
         <div class="field">
           <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "名前" %>
         </div>

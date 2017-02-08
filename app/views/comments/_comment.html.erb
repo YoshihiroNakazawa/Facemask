@@ -11,7 +11,7 @@
         <p class="comment-content"><%= comment.content %></p>
         <div class="clearfix"></div>
         <div class="comment-edit">
-          <%= comment.created_at.strftime("%-m月%-d日 %-H:%M") %>
+          <%= comment.updated_at.strftime("%-m月%-d日 %-H:%M") %>
           <%= link_to_if(current_user.id == comment.user.id, '', edit_comment_path(comment), class: "fa fa-pencil-square-o fa-sm", remote: true) %>
           <%= link_to_if(current_user.id == comment.user.id, '', comment_path(comment), class: "fa fa-trash-o fa-sm", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' }) %>
         </div>
