@@ -1,5 +1,5 @@
 <% if user.id==current_user.id || (user.attributes["follower"]==nil && user.following?(current_user)) || user.attributes["follower"]  %>
-  <div class="sugao"><%= profile_img_thumb(user) if profile_img_thumb(user) %></div>
+  <div class="sugao"><%= profile_img_lgthumb(user) if profile_img_lgthumb(user) %></div>
 <% else %>
   <div class="fukumen" style="position: relative;">
     <% uid = user.id %>

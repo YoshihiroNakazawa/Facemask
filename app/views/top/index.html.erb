@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="child row">
     <div class="left-col col-sm-3">
-      <p class="image-profile" ><%= profile_img(@user) if profile_img(@user) %></p>
+      <p class="image-profile" ><%= profile_img_thumb(@user) if profile_img_thumb(@user) %></p>
       <p class="text-profile" ><%= @user.name %></p>
     </div>
     <div class="col-sm-6">
       <div class="panel">
         <div class="panel-body panel-topic-new">
           <div class="image-profile" >
-            <%= profile_img(@user) if profile_img(@user) %>
+            <%= profile_img_thumb(@user) if profile_img_thumb(@user) %>
           </div>
           <p class="text-profile">今なにしてる？</p>
         </div>
