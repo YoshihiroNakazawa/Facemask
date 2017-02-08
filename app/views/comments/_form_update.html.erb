@@ -1,7 +1,7 @@
 <%= form_for( comment, remote: true ) do |f| %>
   <%= f.error_messages! %>
   <div class="field">
-    <%= f.text_field :content, class: "form-control" %>
+    <%= f.text_field :content, autofocus: true, class: "form-control" %>
   </div>
   <div class="actions">
   </div>

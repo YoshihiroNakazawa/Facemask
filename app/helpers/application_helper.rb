@@ -5,7 +5,7 @@ module ApplicationHelper
     unless user.provider.blank?
       img_url = user.image_url
     else
-      img_url = 'sugao.png'
+      img_url = "#{(user.id%24)+1}.png"
     end
     image_tag(img_url, alt: user.name)
   end
@@ -16,7 +16,7 @@ module ApplicationHelper
     unless user.provider.blank?
       img_url = user.image_url
     else
-      img_url = 'sugao.png'
+      img_url = "#{(user.id%24)+1}.png"
     end
     image_tag(img_url, alt: user.name)
   end
@@ -27,7 +27,7 @@ module ApplicationHelper
     unless user.provider.blank?
       img_url = user.image_url
     else
-      img_url = 'sugao.png'
+      img_url = "#{(user.id%24)+1}.png"
     end
     image_tag(img_url, alt: user.name)
   end

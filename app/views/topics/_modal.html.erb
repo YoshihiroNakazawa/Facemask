@@ -5,27 +5,25 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">
+        <h5 class="modal-title">
           <% if( @topic.id==nil ) %>
             トピック作成
           <% else %>
             トピック編集
           <% end %>
-        </h4>
+        </h5>
       </div>
       <div class="modal-body">
         <div class="field">
-          <%= f.label :title %><br>
-          <%= f.text_field :title %>
+          <%= f.text_field :title, autofocus: true, placeholder: "タイトル", class: "form-control input-sm" %>
         </div>
         <div class="field">
-          <%= f.label :content %><br>
-          <%= f.text_field :content %>
+          <%= f.text_field :content, placeholder: "本文", class: "form-control input-sm" %>
         </div>
       </div>
       <div class="modal-footer">
         <div class="topic-errors text-left"></div>
-        <%= f.submit "投稿", :class => "btn btn-primary" %>
+        <%= f.submit "投稿", :class => "btn btn-blue" %>
       </div>
     <% end %>
   </div>
