@@ -72,6 +72,9 @@
   .message-body {
     display: block;
     margin-left: 5px;
+    .recieve-message {
+      font-weight: bold;
+    }
   }
   .message-read {
     display: block;

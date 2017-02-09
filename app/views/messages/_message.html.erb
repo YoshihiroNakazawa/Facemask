@@ -6,9 +6,11 @@
   <p class="created-at"><%= message.message_time %></p>
   <div class="clearfix"></div>
   <div class="message-body">
-    <div id = "<%= message.id %>">
+    <% if read_user.id != message.user.id %>
+      <p class="recieve-message"><%= message.body %></p>
+    <% else %>
       <p><%= message.body %></p>
-      <div class="clearfix"></div>
-    </div>
+    <% end %>
+    <div class="clearfix"></div>
   </div>
 </div>
