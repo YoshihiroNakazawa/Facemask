@@ -80,7 +80,7 @@ end
 
 (1..100).each do |n1|
   (n1+1..100).each do |n2|
-    if rand(100)%5==0
+    if rand(100)%10==0
       Conversation.create!(sender_id: n1, recipient_id: n2)
     end
   end
@@ -88,7 +88,7 @@ end
 
 conversations = Conversation.all
 conversations.each do |c|
-  n = rand(10)
+  n = rand(10)+1
   n.times do |n1|
     if n1%4 == 0
       user_id = c.sender_id
