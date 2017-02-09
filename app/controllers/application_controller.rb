@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   #変数PERMISSIBLE_ATTRIBUTESに配列[:name]を代入
   PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
 
+  def after_sign_out_path_for resource
+    new_user_session_path
+  end
+
   protected
 
     #deviseのストロングパラメーターにカラム追加するメソッドを定義
