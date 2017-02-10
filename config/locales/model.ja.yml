@@ -6,6 +6,8 @@ ja:
       comment: "コメント"
       notification: "お知らせ"
       message: "メッセージ"
+      conversation: "会話"
+      relationship: "つながり"
     attributes:
       user:
         title: "タイトル"

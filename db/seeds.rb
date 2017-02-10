@@ -35,7 +35,7 @@ Faker::Config.locale = 'ja'
   User.create!(email: email, name: name, password: password, password_confirmation: password, confirmed_at: confirmed_at, uid: uid)
 end
 
-User.create!(email: "admin@mail.com", name: "admin", password: "adminpass", password_confirmation: "adminpass", confirmed_at: Time.now, uid: SecureRandom.uuid)
+User.create!(email: "admin@mail.com", name: "admin", password: "adminpass", password_confirmation: "adminpass", confirmed_at: Time.now, uid: SecureRandom.uuid, admin: true)
 
 1000.times do |n|
   title = Faker::Name.title
