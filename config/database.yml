@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: Facemask_production
-  username: Facemask
-  password: <%= ENV['FACEMASK_DATABASE_PASSWORD'] %>
+  database: fukumen_production
+  username: fukumen
+  password: <%= ENV['FUKUMEN_DATABASE_PASSWORD'] %>
